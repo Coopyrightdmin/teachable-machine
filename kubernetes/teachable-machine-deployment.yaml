@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    io.k8s.description: Alpine Node S2I Builder
+    io.k8s.display-name: alien6/teachable-machine
+    maintainer: Alien6 <contact@alien6.com>
+    summary: Platform for building and running node applications
+    version: "1"
+  labels:
+    io.kompose.service: teachable-machine
+  name: teachable-machine
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        io.kompose.service: teachable-machine
+    spec:
+      containers:
+      - args:
+        - /usr/libexec/s2i/run
+        env:
+        - name: NPM_RUN
+          value: run watch
+        image: alien6/teachable-machine
+        name: teachable-machine
+        ports:
+        - containerPort: 3000
+        resources: {}
+        securityContext:
+          runAsUser: 1001
+        workingDir: /opt/app-root
+      restartPolicy: Always
+status: {}
