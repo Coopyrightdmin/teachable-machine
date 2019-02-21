@@ -16,4 +16,6 @@ RUN chown -R 1001:0 /tmp/scripts /tmp/src &&\
 
 USER 1001
 RUN /tmp/scripts/assemble
+
+EXPOSE 3000
 CMD /usr/libexec/s2i/run
