@@ -11,7 +11,8 @@ COPY .s2i/bin /tmp/scripts
 COPY . /tmp/src
 
 RUN chown -R 1001:0 /tmp/scripts /tmp/src &&\
-    chmod +x /tmp/scripts/assemble
+    chmod +x /tmp/scripts/assemble &&\
+    chmod +x /usr/libexec/s2i/run
 
 USER 1001
 RUN /tmp/scripts/assemble
