@@ -35,5 +35,3 @@ echo "---> Building your Node application from source"
 npm install -d
 mkdir public
 
-# set permissions for any installed artifacts
-fix-permissions /opt/app-root
